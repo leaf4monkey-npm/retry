@@ -5,7 +5,6 @@
  */
 'use strict';
 
-require('babel-register');
 const assert = require('chai').assert;
 
 const retry = require('../lib');
