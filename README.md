@@ -15,6 +15,8 @@ npm install --save promised-simple-retry
 ## 使用 | Usage
 
 ```js
+const retry = require('promised-simple-retry');
+
 let task = function () {
     // what you want to do.
     throw new Error('always wrong.');
