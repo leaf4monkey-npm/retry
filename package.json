@@ -1,0 +1,29 @@
+{
+  "name": "retry-task",
+  "version": "0.0.1",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/leaf4monkey-npm/retry.git"
+  },
+  "keywords": [
+    "retry"
+  ],
+  "author": "leaf4monkey <joc98@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leaf4monkey-npm/retry/issues"
+  },
+  "homepage": "https://github.com/leaf4monkey-npm/retry#readme",
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "sinon": "^2.1.0"
+  }
+}
