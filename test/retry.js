@@ -10,7 +10,7 @@ const assert = require('chai').assert;
 const retry = require('../lib');
 
 describe('retry()', function () {
-    it('重复执行直到超出重试次数', function (done) {
+    it('execute `task()` until retry times equals to `options.times`', function (done) {
         let task = function () {
             throw new Error('always wrong.');
         };
@@ -21,8 +21,8 @@ describe('retry()', function () {
             assert.fail();
             done();
         }).catch(function (err) {
-            assert(err.tried > 0, '任务至少执行过一次');
-            assert((err.tried - 1) * options.delay <= err.cost, '任务执行时间应大于等于重试次数与执行间隔时间的乘积');
+            assert(err.tried > 0, 'task was executed at least 1 time.');
+            assert((err.tried - 1) * options.delay <= err.cost);
 
             let errPrefix = `failed after ${options.times} times retrying, with error`;
             let messagePrefix = err.message.split('\:')[0];
@@ -30,7 +30,7 @@ describe('retry()', function () {
             done();
         });
     });
-    it('重复执行任务直到成功', function (done) {
+    it('execute `task()` until success.', function (done) {
         let arr = [];
         let t = 0;
         let tm = 3;

@@ -1,18 +1,19 @@
 # promised-simple-retry
 
+
 ## 环境 | Environment
 
-node 6.x
+node >= 4.x
 
 
-## 安装 | Installation
+## Installation
 
 ```bash
 npm install --save promised-simple-retry
 ```
 
 
-## 使用 | Usage
+## Usage
 
 ```js
 const retry = require('promised-simple-retry');
@@ -40,7 +41,7 @@ retry(task, options).then(function (res) {
 ```
 
 
-## 测试 | Test
+## Test
 
 ```bash
 npm i -g mocha
