@@ -1,7 +1,7 @@
 # promised-simple-retry
 
 
-## 环境 | Environment
+## Environment
 
 node >= 4.x
 
