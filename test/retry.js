@@ -54,4 +54,46 @@ describe('retry()', function () {
             done();
         });
     });
+
+    it('execute async `task()` until success', function (done) {
+        let arr = [];
+        let t = 0;
+        let tm = 3;
+        let _task = function (times, callback) {
+            setTimeout(function () {
+                arr.push(times);
+                t++;
+
+                if (t > tm) {
+                    assert.fail();
+                    done();
+                }
+
+                if (times) {
+                    return callback(new Error('`times` giant than 0.'));
+                }
+                callback(null, 'success');
+            }, 10);
+        };
+
+        let task = function (times) {
+            return new Promise(function (resolve, reject) {
+                _task(times, function (err, res) {
+                    if (err) {
+                        return reject(err);
+                    }
+                    resolve(res);
+                });
+            });
+        };
+
+        retry(task, {times: tm}).then(function (res) {
+            assert.equal(res, 'success');
+            assert.sameMembers(arr, [1, 2, 0]);
+            done();
+        }).catch(function (err) {
+            assert.fail(err);
+            done();
+        });
+    });
 });
